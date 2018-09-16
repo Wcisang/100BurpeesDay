@@ -3,7 +3,7 @@ package com.example.williamcisang.a100burpeesday.domain.database
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
 import android.arch.persistence.room.TypeConverters
-import android.se.omapi.Session
+import com.example.williamcisang.a100burpeesday.domain.Session
 import com.example.williamcisang.a100burpeesday.domain.database.dao.SessionDAO
 import com.example.williamcisang.a100burpeesday.util.TypeDatabaseConverter
 

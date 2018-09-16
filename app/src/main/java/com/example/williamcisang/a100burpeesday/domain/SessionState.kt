@@ -5,7 +5,9 @@ import java.io.Serializable
 /**
  * Created by WCisang on 15/09/2018.
  */
-class SessionState(state: Int) : Serializable{
+class SessionState : Serializable{
+
+    var state: Int = 0
 
     companion object {
         const val ON_PROGRESS = 0

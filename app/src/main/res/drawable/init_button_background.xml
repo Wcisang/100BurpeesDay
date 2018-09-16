@@ -1,0 +1,7 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true"
+        android:drawable="@drawable/init_button_pressed" />
+    <item android:state_enabled="false"
+        android:drawable="@drawable/button_disable" />
+    <item android:drawable="@drawable/init_button" />
+</selector>

@@ -5,6 +5,7 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 import android.os.Parcel
 import android.os.Parcelable
+import java.util.*
 
 /**
  * Created by WCisang on 15/09/2018.
@@ -15,32 +16,29 @@ class Session() : Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0
-    var dia = 0
-    var beginDate = 0L
-    var endDate = 0L
+    var beginDate = Date()
+    var endDate = Date()
     var totalBurpees = 0
-    var missingBurpees = 0
+    var completedBurpees = 0
 
     @Embedded
     var sessionState: SessionState? = null
 
     constructor(parcel: Parcel) : this() {
         id = parcel.readLong()
-        dia = parcel.readInt()
-        beginDate = parcel.readLong()
-        endDate = parcel.readLong()
+        beginDate = Date(parcel.readLong())
+        endDate = Date(parcel.readLong())
         totalBurpees = parcel.readInt()
-        missingBurpees = parcel.readInt()
+        completedBurpees = parcel.readInt()
         sessionState = parcel.readSerializable() as SessionState
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeLong(id)
-        parcel.writeInt(dia)
-        parcel.writeLong(beginDate)
-        parcel.writeLong(endDate)
+        parcel.writeLong(beginDate.time)
+        parcel.writeLong(endDate.time)
         parcel.writeInt(totalBurpees)
-        parcel.writeInt(missingBurpees)
+        parcel.writeInt(completedBurpees)
         parcel.writeSerializable(sessionState)
     }
 

@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">100BurpeesDay</string>
+    <string name="app_name">100 BURPEE</string>
+    <string name="init">Iniciar</string>
+
+    <string name="finished">Completado</string>
+    <string name="partial">Parcial</string>
+    <string name="confirm_save_burpee_message">Confirmar realização dos Burpees</string>
+    <string name="confirm_action">Confirmar</string>
+    <string name="cancel_action">Cancelar</string>
+    <string name="created_by">Desenvolvido por \nRaquel Gallo e Will Cisang</string>
+    <string name="begin_date">Data de início</string>
 </resources>
