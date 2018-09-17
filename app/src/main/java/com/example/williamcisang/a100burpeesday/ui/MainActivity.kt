@@ -6,7 +6,7 @@ import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.text.format.DateUtils
+import android.view.Menu
 import android.view.ViewTreeObserver
 import com.example.williamcisang.a100burpeesday.R
 import com.example.williamcisang.a100burpeesday.adapter.ListDaysAdapter
@@ -18,6 +18,12 @@ import com.example.williamcisang.a100burpeesday.util.BurpeeCalculator
 import com.example.williamcisang.a100burpeesday.util.DateUtil
 import com.example.williamcisang.a100burpeesday.viewmodel.MainViewModel
 import java.util.Calendar
+import android.content.DialogInterface
+import android.content.Intent
+import android.support.v7.app.AlertDialog
+import android.view.MenuItem
+import com.example.williamcisang.a100burpeesday.domain.SessionState
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,6 +57,11 @@ class MainActivity : AppCompatActivity() {
             session = it!!
             setupList()
             itemClicked(getDay())
+        })
+
+        viewModel.sessionResetValue.observe(this, Observer {
+            startActivity(Intent(this, BeginActivity::class.java))
+            finish()
         })
     }
 
@@ -126,5 +137,38 @@ class MainActivity : AppCompatActivity() {
         viewModel.updateSession(session)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            R.id.change_date -> showResetDateConfirmation()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun showResetDateConfirmation() {
+        val alert = AlertDialog.Builder(this)
+        alert.setMessage(null)
+        alert.setTitle(R.string.confirm_reset_date_message)
+
+        alert.setPositiveButton(R.string.confirm_action, { dialog, whichButton ->
+            resetDate()
+            dialog.dismiss()
+        })
+
+        alert.setNegativeButton(R.string.cancel_action, { dialog, whichButton ->
+            dialog.dismiss()
+        })
+
+        alert.show()
+    }
+
+    private fun resetDate() {
+        viewModel.updateSessionReset(session)
+    }
 
 }

@@ -5,6 +5,7 @@
     <string name="finished">Completado</string>
     <string name="partial">Parcial</string>
     <string name="confirm_save_burpee_message">Confirmar realização dos Burpees</string>
+    <string name="confirm_reset_date_message">Deseja trocar a data de início?</string>
     <string name="confirm_action">Confirmar</string>
     <string name="cancel_action">Cancelar</string>
     <string name="created_by">Desenvolvido por \nRaquel Gallo e Will Cisang</string>
